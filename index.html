@@ -18,18 +18,16 @@
   }
 
   .fb {
-    position: absolute;
+    position: fixed;
     top: 20px;
     z-index: -1;
     opacity: .05;
     visibility: hidden;
-    transition: visibility 1s, transform 4s;
-    left: -100%;
+    transition: visibility 1s, left 2s, right 2s, transform 4s;
   }
 
   .fb.active {
     visibility: visible;
-    left: auto;
   }
 
   .fb1.active {
@@ -39,7 +37,7 @@
 
   .fb2.active {
     transform: rotate(-22deg);
-    right: 15%;
+    right: 5%;
     top: 5%;
   }
 
@@ -50,7 +48,7 @@
 
   .fb4.active {
     transform: rotate(-20deg);
-    right: 20%;
+    right: 10%;
   }
 
   .fb5.active {
@@ -61,7 +59,7 @@
 
   .fb6.active {
     transform: rotate(-23deg);
-    right: 22%;
+    right: 2%;
   }
 
   .fb7.active {
@@ -71,7 +69,7 @@
 
   .fb8.active {
     transform: rotate(-24deg);
-    right: 18%;
+    right: 8%;
   }
 
   .fb9.active {
@@ -82,7 +80,7 @@
   .fb10.active {
     transform: rotate(-22deg);
     top: 4%;
-    right: 13%;
+    right: 0%;
   }
 </style>
 
@@ -163,21 +161,25 @@
   <script>
     (function classSwitch() {
       var num = 1;
+      var showFlag = true;
       setInterval(function () {
         var elements = document.getElementsByClassName("fb");
         for (let item of elements) {
           item.classList.remove("active");
         }
-        var elem = document.getElementsByClassName("fb" + num)[0];
-        if (elem) {
-          elem.classList.add("active");
+        if (showFlag) {
+          var elem = document.getElementsByClassName("fb" + num)[0];
+          if (elem) {
+            elem.classList.add("active");
+          }
+          if (num === 10 || num > 10) {
+            num = 1;
+          } else {
+            num++;
+          }
         }
-        if (num === 11 || num > 11) {
-          num = 1;
-        } else {
-          num++;
-        }
-      }, 10000);
+        showFlag = !showFlag;
+      }, 6000);
     })()
   </script>
 </body>
