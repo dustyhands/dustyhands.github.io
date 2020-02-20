@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head><style>#result { font-size:30px;}</style></head>
+  <head>
+    <style>
+      #result { font-size:30px;}
+      input {
+        min-width: 75%;
+    font-size: 20px;
+      }
+    </style>
+  </head>
 <body>
 
-<p>Enter the Name including initial</p>
+<p>Enter the Name including initial. without space. eg. Tamilselvan M </p>
+  <p>Expected: 19, 46, 37</p>
   <input type="text" onChange="calculate()" onkeyup="calculate()" id="nameInput"/>
   <p id="result"></p>
 <script>
@@ -38,7 +47,7 @@ z:7
 function calculate() {
   var text = document.getElementById("nameInput").value;
   document.getElementById("result").innerHTML = text.toLowerCase().split('').reduce((tot, elem)=>{
-return tot += ch[elem];
+return tot += isNaN(ch[elem]) || !ch[elem] ? 0 : ch[elem];
 },0);
 }
 </script>
