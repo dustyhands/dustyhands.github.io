@@ -2,19 +2,43 @@
 <html>
 <body>
 
-<p>Click the button to get the sum of the rounded numbers in the array.</p>
-<button onclick="myFunction()">Try it</button>
-
-<p>Sum of numbers in array: <span id="demo"></span></p>
-
+<p>Enter the Name including initial</p>
+  <input type="text" onChange="calculate()" id="nameInput"/>
+  <p id="result"></p>
 <script>
-var numbers = [15.5, 2.3, 1.1, 4.7];
-
-function getSum(total, num) {
-  return total + Math.round(num);
-}
-function myFunction(item) {
-  document.getElementById("demo").innerHTML = numbers.reduce(getSum, 0);
+var ch = {
+a:1,
+b:2,
+c:3,
+d:4,
+e:5,
+f:8,
+g:3,
+h:5,
+i:1,
+j:1,
+k:2,
+l:3,
+m:4,
+n:5,
+o:7,
+p:8,
+q:1,
+r:2,
+s:3,
+t:4,
+u:6,
+v:6,
+w:6,
+x:5,
+y:1,
+z:7
+};
+function calculate() {
+  var text = document.getElementById("nameInput").value;
+  document.getElementById("result").innerHTML = text.toLowerCase().split('').reduce((tot, elem)=>{
+return tot += ch[elem];
+},0);
 }
 </script>
 
